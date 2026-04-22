@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aniya's FakeSpot — Is It Real or Fake?</title>
+<meta name="description" content="Fake websites, scam jobs, blackmail chats detect cheyyi — by Aniya Dondapati">
+<meta name="theme-color" content="#ff3c5f">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="https://api.iconify.design/twemoji/detective.svg">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --surface2: #1c1c27;
+    --accent: #ff3c5f;
+    --accent2: #ffb547;
+    --safe: #2ecc8a;
+    --warn: #ffb547;
+    --danger: #ff3c5f;
+    --text: #f0f0f8;
+    --muted: #7a7a9a;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,60,95,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,60,95,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    padding: 48px 0 32px;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,60,95,0.12);
+    border: 1px solid rgba(255,60,95,0.25);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  h1 span {
+    color: var(--accent);
+    position: relative;
+  }
+
+  .subtitle {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 300;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  /* Category tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin: 36px 0 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tab {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 9px 20px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab:hover { border-color: var(--accent); color: var(--text); }
+  .tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  /* Checklist card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .card-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* Checklist items */
+  .checklist { padding: 8px 0; }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 24px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+  .check-item:hover { background: rgba(255,255,255,0.02); }
+
+  .check-item.checked { background: rgba(46,204,138,0.04); }
+  .check-item.danger-check.checked { background: rgba(255,60,95,0.05); }
+
+  .checkbox {
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 13px;
+  }
+
+  .check-item.checked .checkbox {
+    background: var(--safe);
+    border-color: var(--safe);
+    color: #0a0a0f;
+  }
+
+  .check-item.danger-check.checked .checkbox {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: white;
+  }
+
+  .check-text { flex: 1; }
+  .check-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .check-sub {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 3px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .red-flag {
+    font-size: 0.72rem;
+    color: var(--danger);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-left: 8px;
+    opacity: 0.8;
+  }
+
+  /* URL Scanner */
+  .url-scanner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .url-scanner-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .url-scanner-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .url-input-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .url-input {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .url-input:focus { border-color: var(--accent); }
+  .url-input::placeholder { color: var(--muted); }
+
+  .scan-btn {
+    background: var(--accent);
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+
+  .scan-btn:hover { opacity: 0.85; }
+  .scan-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .scan-results {
+    margin-top: 16px;
+    display: none;
+  }
+
+  .scan-results.visible { display: block; }
+
+  .scan-result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .scan-result-header.safe { background: rgba(46,204,138,0.1); color: var(--safe); border: 1px solid rgba(46,204,138,0.2); }
+  .scan-result-header.warn { background: rgba(255,181,71,0.1); color: var(--warn); border: 1px solid rgba(255,181,71,0.2); }
+  .scan-result-header.danger { background: rgba(255,60,95,0.1); color: var(--danger); border: 1px solid rgba(255,60,95,0.2); }
+
+  .scan-checks { display: flex; flex-direction: column; gap: 8px; }
+
+  .scan-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border-radius: 10px;
+    font-size: 0.82rem;
+  }
+
+  .scan-check-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .scan-check-label { font-weight: 500; color: var(--text); }
+  .scan-check-detail { color: var(--muted); margin-top: 2px; font-size: 0.77rem; }
+
+  /* Language switcher */
+  .lang-bar {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 0 0;
+  }
+
+  .lang-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .lang-btn:hover { border-color: var(--accent); color: var(--text); }
+  .lang-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+
+  /* Install banner */
+  .install-banner {
+    display: none;
+    background: linear-gradient(135deg, rgba(255,60,95,0.15), rgba(255,181,71,0.1));
+    border: 1px solid rgba(255,60,95,0.25);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .install-banner.show { display: flex; }
+  .install-banner-text { flex: 1; font-size: 0.85rem; }
+  .install-banner-text strong { display: block; color: var(--text); margin-bottom: 3px; }
+  .install-banner-text span { color: var(--muted); font-size: 0.78rem; }
+
+  .install-btn {
+    background: var(--accent);
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .install-btn:hover { opacity: 0.85; }
+
+  /* Score bar */
+  .score-section {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 24px;
+    position: sticky;
+    top: 16px;
+    z-index: 10;
+  }
+
+  .score-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .score-display {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .score-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    transition: color 0.4s;
+  }
+
+  .score-verdict {
+    flex: 1;
+  }
+
+  .verdict-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .verdict-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  .score-bar-track {
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    height: 8px;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s;
+    width: 0%;
+  }
+
+  /* Reset button */
+  .reset-btn {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .reset-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Tips */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 500px) { .tips-grid { grid-template-columns: 1fr; } }
+
+  .tip-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .tip-card strong {
+    display: block;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 0.88rem;
+  }
+
+  .tip-emoji { font-size: 1.2rem; margin-bottom: 6px; display: block; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 24px 0 48px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    border-top: 1px solid var(--border);
+  }
+
+  footer span { color: var(--accent); }
+
+  /* Section hidden */
+  .section { display: none; }
+  .section.visible { display: block; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <!-- Language switcher -->
+    <div class="lang-bar">
+      <button class="lang-btn active" onclick="setLang('en')">🇬🇧 English</button>
+      <button class="lang-btn" onclick="setLang('te')">🇮🇳 తెలుగు</button>
+      <button class="lang-btn" onclick="setLang('hi')">🇮🇳 हिंदी</button>
+      <button class="lang-btn" onclick="setLang('ta')">🇮🇳 தமிழ்</button>
+    </div>
+    <div class="badge">🔍 by Aniya Dondapati</div>
+    <h1 id="mainTitle">Is It <span>Real</span> or Fake?</h1>
+    <p class="subtitle" id="mainSubtitle">Check Instagram shops, LinkedIn jobs, and suspicious websites before you trust them with your money or personal info.</p>
+  </header>
+
+  <!-- Install Banner -->
+  <div class="install-banner" id="installBanner">
+    <span style="font-size:2rem">📲</span>
+    <div class="install-banner-text">
+      <strong id="installTitle">Install as App!</strong>
+      <span id="installDesc">Save to home screen — works without internet too!</span>
+    </div>
+    <button class="install-btn" id="installBtn" onclick="installApp()">Install</button>
+  </div>
+
+  <!-- URL Scanner -->
+  <div class="url-scanner">
+    <div class="url-scanner-title">🔗 Paste a Link — Instant Check</div>
+    <div class="url-scanner-desc">Instagram profile, Telegram channel, website link — paste చేయి, మేము check చేస్తాం</div>
+    <div class="url-input-row">
+      <input class="url-input" id="urlInput" type="text" placeholder="https://example.com or any link..." />
+      <button class="scan-btn" id="scanBtn" onclick="scanURL()">Scan 🔍</button>
+    </div>
+    <div class="scan-results" id="scanResults">
+      <div class="scan-result-header" id="scanHeader"></div>
+      <div class="scan-checks" id="scanChecks"></div>
+    </div>
+  </div>
+
+  <!-- Score (sticky) -->
+  <div class="score-section">
+    <div class="score-label">Safety Score</div>
+    <div class="score-display">
+      <div class="score-num" id="scoreNum">0%</div>
+      <div class="score-verdict">
+        <div class="verdict-text" id="verdictText">Start checking →</div>
+        <div class="verdict-sub" id="verdictSub">Tick the signs you see below</div>
+      </div>
+    </div>
+    <div class="score-bar-track">
+      <div class="score-bar-fill" id="scoreBar"></div>
+    </div>
+    <button class="reset-btn" onclick="resetAll()">↺ Reset all checks</button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('instagram')">📸 Instagram</button>
+    <button class="tab" onclick="switchTab('facebook')">👥 Facebook</button>
+    <button class="tab" onclick="switchTab('youtube')">▶️ YouTube</button>
+    <button class="tab" onclick="switchTab('whatsapp')">💬 WhatsApp</button>
+    <button class="tab" onclick="switchTab('linkedin')">💼 LinkedIn</button>
+    <button class="tab" onclick="switchTab('telegram')">✈️ Telegram</button>
+    <button class="tab" onclick="switchTab('website')">🌐 Website</button>
+    <button class="tab" onclick="switchTab('hackscam')">🧑‍💻 Hack/Chat Scam</button>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div class="section visible" id="section-instagram">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,60,95,0.12)">🚨</div>
+        <div>
+          <div class="card-title">Red Flags — Tick if you SEE these</div>
+          <div class="card-desc">These are warning signs. More ticks = more dangerous</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">No real address or phone number <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Legit shops always show contact info. "DM us" only is suspicious.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Prices are too cheap to believe <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">A ₹500 Nike shoes or ₹200 iPhone? That's a scam.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Only accepts UPI / bank transfer — no return policy <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Scammers avoid traceable payments and never offer refunds.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Account is very new (less than 6 months) with few posts</div>
+            <div class="check-sub">Check when the account was created. Fake shops appear and disappear fast.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Comments are turned off or all comments look fake</div>
+            <div class="check-sub">Real shops welcome reviews. Fake ones hide or delete negative comments.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They ask for payment before showing order confirmation</div>
+            <div class="check-sub">Always demand a proper invoice/receipt before paying anyone.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(46,204,138,0.12)">✅</div>
+        <div>
+          <div class="card-title">Good Signs — Tick if you SEE these</div>
+          <div class="card-desc">These mean the shop is more likely to be real</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Has a linked website with proper product pages</div>
+            <div class="check-sub">A real website with SSL (https://) is a positive sign.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Genuine customer photos and video reviews in comments</div>
+            <div class="check-sub">Real buyers share unboxing photos. Hard to fake with real accounts.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Accepts payment via Razorpay, PayTM business, or COD</div>
+            <div class="check-sub">These platforms have buyer protection and dispute resolution.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACEBOOK -->
+  <div class="section" id="section-facebook">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,60,95,0.12)">🚨</div>
+        <div>
+          <div class="card-title">Red Flags — Tick if you SEE these</div>
+          <div class="card-desc">Facebook లో fake shops, lottery scams చాలా common గా ఉంటాయి</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Page చాలా recently create అయింది — few weeks లోపు <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Page name మీద click చేసి "Page Transparency" చూడు. Real businesses పాత pages ఉంటాయి.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">"You won a prize! Click here to claim" అని message వస్తుంది <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Facebook lottery scam — Facebook ఎప్పుడూ random గా prizes ఇవ్వదు.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Product photos అన్నీ stolen గా కనిపిస్తాయి — watermarks లేదా mixed brands</div>
+            <div class="check-sub">Google Lens తో image search చేయి — same photos వేరే sites లో కనిపిస్తే fake!</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Comments లో అందరూ "I got mine! Amazing!" అంటున్నారు</div>
+            <div class="check-sub">Fake paid comments. Real reviews లో complaints కూడా ఉంటాయి.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Marketplace లో seller location వేరే city లో ఉంది కానీ cash only అడుగుతున్నారు</div>
+            <div class="check-sub">Facebook Marketplace scam — ముందే payment చేయకు. Delivery తర్వాత COD మాత్రమే.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(46,204,138,0.12)">✅</div>
+        <div>
+          <div class="card-title">Good Signs — Tick if you SEE these</div>
+          <div class="card-desc">Real Facebook pages ఇవి చూపిస్తాయి</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Page Transparency లో page చాలా పాతది (1+ years)</div>
+            <div class="check-sub">Settings → Page Transparency లో creation date చూడవచ్చు.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Negative reviews కూడా ఉన్నాయి, అన్నీ 5 star కాదు</div>
+            <div class="check-sub">Real businesses కి mixed reviews ఉంటాయి. అన్నీ perfect reviews fake గా ఉంటాయి.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Official website link ఉంది మరియు working గా ఉంది</div>
+            <div class="check-sub">About section లో real website, address, phone number ఉంటాయి.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUTUBE -->
+  <div class="section" id="section-youtube">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,60,95,0.12)">🚨</div>
+        <div>
+          <div class="card-title">Red Flags — Tick if you SEE these</div>
+          <div class="card-desc">YouTube లో fake giveaways, investment scams చాలా ఉంటాయి</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Channel name famous person లా ఉంది కానీ verified కాదు <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Example: "Elon Musk Official2" లేదా "PM Modi Gifts" — fake impersonation channels.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Live stream లో "Send crypto/money, get double back" అంటున్నారు <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">ఇది 100% scam. ఎవరూ double చేసి ఇవ్వరు. YouTube లో most common crypto scam ఇదే.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Description లో link ఉంది — "Free gift claim cheyyi" అని</div>
+            <div class="check-sub">Description links తో phishing sites కి తీసుకెళ్తారు. Never click చేయకు.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Channel చాలా కొత్తది కానీ millions of views చూపిస్తుంది</div>
+            <div class="check-sub">Fake views కొనుక్కోవచ్చు. Channel age మరియు subscriber count చూడు.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Comments లో WhatsApp number share చేస్తున్నారు — "Contact for investment"</div>
+            <div class="check-sub">Investment scammers YouTube comments లో నంబర్లు వేస్తారు. ఎప్పుడూ contact చేయకు.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(46,204,138,0.12)">✅</div>
+        <div>
+          <div class="card-title">Good Signs — Tick if you SEE these</div>
+          <div class="card-desc">Genuine YouTube channels ఇవి చూపిస్తాయి</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Channel కి YouTube verified blue tick ✓ ఉంది</div>
+            <div class="check-sub">Channel name పక్కన checkmark ఉంటే YouTube officially verify చేసింది.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Channel చాలా పాతది (2+ years) మరియు consistent content ఉంది</div>
+            <div class="check-sub">Scam channels నెలలోపే disappear అవుతాయి. Real creators long-term active గా ఉంటారు.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">About section లో real social media links మరియు contact ఉన్నాయి</div>
+            <div class="check-sub">Real creators official Instagram, Twitter links వేస్తారు.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div class="section" id="section-whatsapp">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,60,95,0.12)">🚨</div>
+        <div>
+          <div class="card-title">Red Flags — Tick if you SEE these</div>
+          <div class="card-desc">WhatsApp India లో most used scam platform — చాలా జాగ్రత్తగా ఉండు!</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Unknown number నుండి job offer లేదా lottery message వచ్చింది <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">WhatsApp లో random job offers 99% scams. Real companies email లేదా LinkedIn వాడతాయి.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">"మీ KYC expire అయింది, వెంటనే update చేయండి" అని message వచ్చింది <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Banks ఎప్పుడూ WhatsApp లో KYC అడగవు. ఇది bank fraud scam.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Group లో add చేశారు — "Daily ₹3000 earn చేయి" అని messages</div>
+            <div class="check-sub">Part-time job WhatsApp groups అన్నీ fake. వెంటనే group leave చేయి.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">OTP share చేయమని అడుగుతున్నారు <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">OTP share చేస్తే వారు మీ account access చేసుకుంటారు. ఎప్పుడూ share చేయకు.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Link పంపారు — "Click చేయి, ₹500 వస్తాయి మీ account కి"</div>
+            <div class="check-sub">Phishing links — click చేస్తే మీ phone hack అవుతుంది లేదా bank details steal అవుతాయి.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Family member గా pretend చేసి emergency money అడుగుతున్నారు</div>
+            <div class="check-sub">"నేను accident లో ఉన్నాను, వెంటనే money పంపు" — call చేసి verify చేయి ముందు.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(46,204,138,0.12)">✅</div>
+        <div>
+          <div class="card-title">Good Signs — Tick if you SEE these</div>
+          <div class="card-desc">Safe WhatsApp contact లక్షణాలు</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Number మీ contacts లో ఉంది మరియు మీకు personally తెలుసు</div>
+            <div class="check-sub">Unknown numbers నుండి వచ్చే అన్ని offers suspicious గా treat చేయి.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Business account కి green verified badge ఉంది</div>
+            <div class="check-sub">WhatsApp Business verified accounts కి green checkmark ఉంటుంది.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">వారు money లేదా personal details అడగలేదు</div>
+            <div class="check-sub">Real businesses WhatsApp లో sensitive information అడగవు.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINKEDIN -->
+  <div class="section" id="section-linkedin">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,60,95,0.12)">🚨</div>
+        <div>
+          <div class="card-title">Red Flags — Tick if you SEE these</div>
+          <div class="card-desc">Fake job postings use these tricks</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They ask for a registration fee or training fee upfront <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">No real company charges you money to give you a job. This is the #1 scam.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Salary sounds unbelievably high for the role <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">"₹80,000/month work from home, no experience needed" — classic scam language.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They move you to WhatsApp immediately without a proper interview</div>
+            <div class="check-sub">Real recruiters keep communication professional and on-platform.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">The company page has almost no followers or employees listed</div>
+            <div class="check-sub">Search the company on LinkedIn. A real business has a presence.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They ask for Aadhaar, PAN, or bank details before joining</div>
+            <div class="check-sub">Legit companies only ask for documents after a formal offer letter is issued.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">The job description has spelling mistakes and vague responsibilities</div>
+            <div class="check-sub">Professional companies write clear, well-written job posts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(46,204,138,0.12)">✅</div>
+        <div>
+          <div class="card-title">Good Signs — Tick if you SEE these</div>
+          <div class="card-desc">Real jobs usually have these</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Company is verified on LinkedIn (blue tick or many real employees)</div>
+            <div class="check-sub">Check if employees have active profiles with real career history.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">You can find the company on Google, Glassdoor, or Ambitionbox</div>
+            <div class="check-sub">Real companies have reviews, news mentions, or at least a website.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They schedule a proper video/phone interview and send an offer letter</div>
+            <div class="check-sub">A real hiring process has multiple steps before asking for any info.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TELEGRAM -->
+  <div class="section" id="section-telegram">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,60,95,0.12)">🚨</div>
+        <div>
+          <div class="card-title">Red Flags — Tick if you SEE these</div>
+          <div class="card-desc">Telegram scams are very common — stay alert!</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They promise easy money — "Earn ₹5000/day from home" <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Task-based scams (like/subscribe/review tasks) always ask you to invest first, then disappear.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They ask you to send money first to "unlock" your earnings <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Classic scam — they show fake profits, then ask you to deposit more to withdraw. You never get paid.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">The group has thousands of members but only admins speak <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Fake groups mute members so no one can warn others. Real communities allow open discussion.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Someone added you to a group without your permission</div>
+            <div class="check-sub">Scammers add random people to fake investment or job groups. Leave immediately.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They claim to be from Amazon, Flipkart, or a big company</div>
+            <div class="check-sub">Real companies never recruit via random Telegram messages. Always verify on the official website.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They share fake screenshots of people "earning" huge amounts</div>
+            <div class="check-sub">Screenshots can be edited in seconds. Never trust payment proof images as evidence.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">They ask for OTP, Aadhaar, or UPI PIN <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">NEVER share OTP or PIN with anyone. This gives them full access to your bank account.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(46,204,138,0.12)">✅</div>
+        <div>
+          <div class="card-title">Good Signs — Tick if you SEE these</div>
+          <div class="card-desc">Safer Telegram channels usually have these</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Channel has a verified website or social media linked in bio</div>
+            <div class="check-sub">Real businesses show their official website and contact details clearly.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Members can comment and negative feedback is not deleted</div>
+            <div class="check-sub">Honest communities allow open discussion. Scam groups block all complaints.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">No upfront payment required to start work or receive benefits</div>
+            <div class="check-sub">Legitimate opportunities never ask you to pay to join or to unlock your earnings.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEBSITE -->
+  <div class="section" id="section-website">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,60,95,0.12)">🚨</div>
+        <div>
+          <div class="card-title">Red Flags — Tick if you SEE these</div>
+          <div class="card-desc">These signs point to a suspicious or fake website</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">URL looks weird — extra words or wrong spelling <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Example: "amaz0n-deals.com" or "flipkart-offers.net" — always check the exact URL.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">No HTTPS — shows "Not Secure" in browser <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">The padlock 🔒 must appear. If not, never enter passwords or payment info.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Website was created very recently (use whois.domaintools.com to check)</div>
+            <div class="check-sub">Scam sites are created days before fraud. Real companies have older domains.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">No proper "About Us", "Contact", or "Privacy Policy" pages</div>
+            <div class="check-sub">Every real business is legally required to show this information.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Pop-ups saying "You won!" or "Claim your prize now!"</div>
+            <div class="check-sub">Classic phishing tactics. Close immediately. Never click.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(46,204,138,0.12)">✅</div>
+        <div>
+          <div class="card-title">Good Signs — Tick if you SEE these</div>
+          <div class="card-desc">Signs of a trustworthy website</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Has HTTPS and a padlock icon in the browser address bar</div>
+            <div class="check-sub">Encrypted connection protects your data from being stolen.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Can be found on Google with reviews and news</div>
+            <div class="check-sub">Search "company name reviews" or "company name scam" before trusting.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Has a real physical address and working customer support</div>
+            <div class="check-sub">Call the number or email them before making any purchase or sharing details.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HACK / CHAT SCAM -->
+  <div class="section" id="section-hackscam">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,60,95,0.12)">🚨</div>
+        <div>
+          <div class="card-title">"Account Hack చేస్తా" Scam — Red Flags</div>
+          <div class="card-desc">Instagram/Facebook hack చేస్తామని భయపెట్టి money తీసుకునే scams చాలా common</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">"నీ account hack చేస్తా, money పంపు లేదా nude photos పంపు" అని threat చేస్తున్నారు <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">ఇది Sextortion / Blackmail scam. వీళ్ళకి నిజంగా hack చేసే power లేదు — భయపెట్టడమే వీళ్ళ పని.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">"నీ friend account నుండి message వచ్చింది — money urgent గా కావాలి" <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Friend account hack చేసి వాళ్ళ contacts కి money అడుగుతారు. ముందు friend కి call చేసి verify చేయి.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">"OTP చెప్పు, నీ account recover చేస్తా" అన్నారు <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">OTP చెప్పిన వెంటనే మీ account వాళ్ళకి వెళ్ళిపోతుంది. ఎప్పుడూ OTP share చేయకు.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">"నీ photos/videos నా దగ్గర ఉన్నాయి, share చేస్తా" అని blackmail చేస్తున్నారు</div>
+            <div class="check-sub">వెంటనే account private చేయి, block చేయి, cybercrime కి report చేయి. Money ఎప్పుడూ పంపకు — పంపినా ఇంకా అడుగుతారు.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Unknown person "love" చూపించి తర్వాత photos తీసుకుని blackmail చేస్తున్నారు</div>
+            <div class="check-sub">Honeytrap scam. Online లో కొత్తగా పరిచయమైన వాళ్ళకి personal photos ఎప్పుడూ పంపకు.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">"₹500 పంపు, నీ hack చేసిన account వెనక్కి ఇస్తా" అంటున్నారు</div>
+            <div class="check-sub">Fake account recovery scam. Real Instagram/Facebook support ఎప్పుడూ money అడగదు.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(255,181,71,0.12)">💬</div>
+        <div>
+          <div class="card-title">Fake Chat గుర్తించే Signs</div>
+          <div class="card-desc">Message real person నుండి వచ్చిందా లేదా fake account నుండి వచ్చిందా?</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Profile photo చాలా perfect గా ఉంది — model లా కనిపిస్తుంది <span class="red-flag">⚠ red flag</span></div>
+            <div class="check-sub">Google Lens తో photo search చేయి — same photo వేరే పేర్లతో కనిపిస్తే fake account!</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">పరిచయం అవగానే చాలా quickly "love" అంటున్నారు — "I love you" లోపల 2-3 రోజుల్లో</div>
+            <div class="check-sub">Romance scam. Real feelings develop over time. Too fast = fake.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Video call చేయమని అడిగితే తప్పించుకుంటున్నారు లేదా blurry video వస్తుంది</div>
+            <div class="check-sub">Fake accounts real గా face చూపించలేవు. Video call refuse చేస్తే — fake!</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">వాళ్ళు foreign లో ఉన్నారని చెప్పి money అడుగుతున్నారు — "ticket కొనుక్కోవాలి రావడానికి"</div>
+            <div class="check-sub">Classic romance scam ending. ఎప్పుడూ online పరిచయమైన వాళ్ళకి money పంపకు.</div>
+          </div>
+        </div>
+        <div class="check-item danger-check" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">Chat లో వాళ్ళు చెప్పే details (name, city, job) అన్నీ మారుతూ ఉంటాయి</div>
+            <div class="check-sub">Scammers details గుర్తుపెట్టుకోరు — inconsistency = fake person.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(46,204,138,0.12)">🛡️</div>
+        <div>
+          <div class="card-title">Scam జరిగితే వెంటనే ఏం చేయాలి?</div>
+          <div class="card-desc">Panic అవ్వకు — ఈ steps follow చేయి</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">✅ వెంటనే block చేయి మరియు report చేయి</div>
+            <div class="check-sub">Instagram/Facebook లో Report → Scam or Fraud select చేయి. Platform వాళ్ళు action తీసుకుంటారు.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">✅ Cybercrime కి complaint చేయి — cybercrime.gov.in లేదా 1930</div>
+            <div class="check-sub">India లో cybercrime report చేయడం free. Screenshots తో complaint చేయవచ్చు.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">✅ Account password వెంటనే మార్చు + 2FA enable చేయి</div>
+            <div class="check-sub">Settings → Security → Two-Factor Authentication enable చేయి. Extra layer of protection.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this)">
+          <div class="checkbox"></div>
+          <div class="check-text">
+            <div class="check-label">✅ Money పోయినా panic అవ్వకు — bank కి వెంటనే call చేయి</div>
+            <div class="check-sub">UPI fraud జరిగితే 24 గంటల్లో bank కి report చేస్తే refund possible అవుతుంది.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tips -->
+  <div class="tips-grid">
+    <div class="tip-card">
+      <span class="tip-emoji">🔍</span>
+      <strong>Always Google first</strong>
+      Search "[Company name] + scam" or "[Company name] + review" before trusting any site or offer.
+    </div>
+    <div class="tip-card">
+      <span class="tip-emoji">💳</span>
+      <strong>Never pay via UPI to strangers</strong>
+      Once money is sent via UPI, it is almost impossible to recover. Use COD when possible.
+    </div>
+    <div class="tip-card">
+      <span class="tip-emoji">🆔</span>
+      <strong>Protect your documents</strong>
+      Never share Aadhaar, PAN, or bank details unless you've verified the company is 100% real.
+    </div>
+    <div class="tip-card">
+      <span class="tip-emoji">📢</span>
+      <strong>Report scams</strong>
+      India: Call 1930 or visit cybercrime.gov.in to report online fraud.
+    </div>
+  </div>
+
+  <footer>
+    Made to protect people from online scams 🛡️ &nbsp;|&nbsp; Built by <span>Aniya Dondapati</span>
+  </footer>
+</div>
+
+<script>
+  let dangerChecked = 0;
+  let safeChecked = 0;
+  let dangerTotal = 0;
+  let safeTotal = 0;
+
+  function countItems() {
+    const section = document.querySelector('.section.visible');
+    dangerTotal = section.querySelectorAll('.danger-check').length;
+    safeTotal = section.querySelectorAll('.check-item:not(.danger-check)').length;
+    dangerChecked = section.querySelectorAll('.danger-check.checked').length;
+    safeChecked = section.querySelectorAll('.check-item:not(.danger-check).checked').length;
+  }
+
+  function scanURL() {
+    const raw = document.getElementById('urlInput').value.trim();
+    if (!raw) return;
+
+    const resultsEl = document.getElementById('scanResults');
+    const headerEl = document.getElementById('scanHeader');
+    const checksEl = document.getElementById('scanChecks');
+
+    // Normalize URL
+    let url = raw;
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+    let hostname = '';
+    try { hostname = new URL(url).hostname.toLowerCase(); }
+    catch { hostname = raw.toLowerCase(); }
+
+    const checks = [];
+    let dangerCount = 0;
+    let safeCount = 0;
+
+    // 1. HTTPS check
+    if (raw.startsWith('https://') || (!raw.startsWith('http://') && !raw.includes('://'))) {
+      checks.push({ icon: '🔒', label: 'HTTPS found — connection is encrypted', detail: 'Your data is protected on this link.', type: 'safe' });
+      safeCount++;
+    } else if (raw.startsWith('http://')) {
+      checks.push({ icon: '🔓', label: 'No HTTPS — connection is NOT secure', detail: 'Never enter passwords or payment info on HTTP sites.', type: 'danger' });
+      dangerCount += 2;
+    }
+
+    // 2. Platform specific checks
+    if (hostname === 'instagram.com' || hostname.endsWith('.instagram.com')) {
+      checks.push({ icon: '📸', label: 'Instagram link — URL safe కానీ content check చేయి!', detail: '⚠️ URL real అయినా post లోపల fake shop/scam content ఉండవచ్చు. దయచేసి 📸 Instagram tab లో checklist use చేయి!', type: 'warn' });
+    }
+    if (hostname === 'facebook.com' || hostname.endsWith('.facebook.com') || hostname === 'fb.com') {
+      checks.push({ icon: '👥', label: 'Facebook link — URL safe కానీ content check చేయి!', detail: '⚠️ URL real అయినా page/post లో scam content ఉండవచ్చు. 👥 Facebook tab లో checklist use చేయి — Page Transparency check చేయి!', type: 'warn' });
+    }
+    if (hostname === 'youtube.com' || hostname.endsWith('.youtube.com') || hostname === 'youtu.be') {
+      checks.push({ icon: '▶️', label: 'YouTube link — URL safe కానీ content check చేయి!', detail: '⚠️ URL real అయినా fake giveaway లేదా scam channel అయి ఉండవచ్చు. ▶️ YouTube tab లో checklist use చేయి!', type: 'warn' });
+    }
+    if (hostname === 'whatsapp.com' || hostname.endsWith('.whatsapp.com') || hostname === 'wa.me') {
+      checks.push({ icon: '💬', label: 'WhatsApp link — జాగ్రత్తగా ఉండు!', detail: '⚠️ Unknown sources నుండి WhatsApp links చాలా dangerous. 💬 WhatsApp tab లో checklist use చేయి!', type: 'warn' });
+      dangerCount++;
+    }
+    if (hostname === 't.me' || hostname.endsWith('.t.me') || hostname.includes('telegram')) {
+      checks.push({ icon: '✈️', label: 'Telegram link detected', detail: 'Use our Telegram checklist below. Telegram groups are commonly used for job & money scams.', type: 'warn' });
+      dangerCount++;
+    }
+
+    // 4. Suspicious domain patterns
+    const suspiciousWords = ['free', 'win', 'prize', 'lucky', 'offer', 'deal', 'cash', 'earn', 'click', 'verify', 'update', 'secure', 'login', 'gift', 'reward', 'bonus'];
+    const foundSuspicious = suspiciousWords.filter(w => hostname.includes(w));
+    if (foundSuspicious.length > 0) {
+      checks.push({ icon: '⚠️', label: `Suspicious words in URL: "${foundSuspicious.join('", "')}"`, detail: 'Scam sites often use tempting words like "free", "win", "prize" in their domain names.', type: 'danger' });
+      dangerCount += foundSuspicious.length;
+    }
+
+    // 5. Brand impersonation check — strict
+    const brands = ['amazon', 'flipkart', 'netflix', 'paypal', 'google', 'facebook', 'instagram', 'whatsapp', 'hdfc', 'sbi', 'icici', 'paytm', 'phonepe', 'youtube', 'twitter', 'snapchat', 'meesho', 'myntra', 'swiggy', 'zomato'];
+    const realDomains = ['amazon.com', 'amazon.in', 'flipkart.com', 'netflix.com', 'paypal.com', 'google.com', 'facebook.com', 'instagram.com', 'whatsapp.com', 'hdfcbank.com', 'sbi.co.in', 'icicibank.com', 'paytm.com', 'phonepe.com', 'youtube.com', 'twitter.com', 'x.com', 'snapchat.com', 'meesho.com', 'myntra.com', 'swiggy.com', 'zomato.com'];
+    const impersonated = brands.find(b => {
+      if (!hostname.includes(b)) return false;
+      // If it exactly matches a real domain, it's fine
+      const isReal = realDomains.some(r => hostname === r || hostname.endsWith('.' + r));
+      return !isReal;
+    });
+    if (impersonated) {
+      checks.push({ icon: '🚨', label: `"${impersonated}" పేరు use చేస్తుంది — fake కావచ్చు!`, detail: `Real ${impersonated}.com లా simple గా ఉంటుంది. Extra words తో ఉంటే దాదాపు fake!`, type: 'danger' });
+      dangerCount += 3;
+    }
+
+    // 6. Too many hyphens or numbers
+    const hyphens = (hostname.match(/-/g) || []).length;
+    if (hyphens >= 2) {
+      checks.push({ icon: '⚠️', label: `URL has ${hyphens} hyphens — looks suspicious`, detail: 'Scam websites often use many hyphens like "best-free-offers-india.com".', type: 'danger' });
+      dangerCount++;
+    }
+
+    // 7. Very long URL
+    if (raw.length > 80) {
+      checks.push({ icon: '⚠️', label: 'URL is very long and complex', detail: 'Phishing links are often very long to hide the real destination.', type: 'warn' });
+      dangerCount++;
+    }
+
+    // 8. Known safe domains — STRICT exact match only
+    const safeDomains = [
+      'google.com', 'youtube.com', 'amazon.in', 'amazon.com',
+      'flipkart.com', 'github.com', 'linkedin.com', 'instagram.com',
+      'facebook.com', 'twitter.com', 'x.com', 'wikipedia.org'
+    ];
+    // Must be EXACTLY the domain or subdomain — not just "contains"
+    const isExactSafe = safeDomains.some(d => hostname === d || hostname.endsWith('.' + d));
+    if (isExactSafe && dangerCount === 0 && safeCount === 0) {
+      checks.push({ icon: '✅', label: 'Known trusted domain', detail: 'This is a well-known legitimate website. But still be careful of what you do on the page.', type: 'safe' });
+      safeCount += 2;
+    }
+
+    // 9. IP address instead of domain
+    if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/.test(hostname)) {
+      checks.push({ icon: '🚨', label: 'URL uses an IP address instead of a name', detail: 'Real websites use domain names. IP-based links are almost always scams.', type: 'danger' });
+      dangerCount += 3;
+    }
+
+    // 10. Short/redirect links
+    const shorteners = ['bit.ly', 'tinyurl', 'goo.gl', 'ow.ly', 't.co', 'shorturl', 'rb.gy', 'cutt.ly'];
+    if (shorteners.some(s => hostname.includes(s))) {
+      checks.push({ icon: '⚠️', label: 'This is a shortened/redirect link', detail: 'You cannot see where this link actually goes. Scammers use these to hide fake websites.', type: 'warn' });
+      dangerCount++;
+    }
+
+    // 11. Hack / blackmail / recovery scam keywords in URL
+    const hackWords = ['hack', 'recover', 'account-help', 'restore', 'unlock', 'bypass', 'cracker', 'spy', 'track', 'snoop', 'keylog', 'stalk', 'blackmail', 'nude', 'revenge'];
+    const foundHack = hackWords.find(w => raw.toLowerCase().includes(w));
+    if (foundHack) {
+      checks.push({ icon: '🚨', label: `Dangerous keyword found: "${foundHack}"`, detail: 'Links with words like "hack", "recover", "spy", "nude" are almost always scams or malware. Do NOT click!', type: 'danger' });
+      dangerCount += 3;
+    }
+
+    // 12. Fake OTP / login phishing patterns
+    const phishWords = ['otp', 'login-verify', 'verify-account', 'confirm-identity', 'secure-login', 'account-suspended', 'update-now'];
+    const foundPhish = phishWords.find(w => raw.toLowerCase().includes(w));
+    if (foundPhish) {
+      checks.push({ icon: '🚨', label: `Phishing pattern detected: "${foundPhish}"`, detail: 'This link may be designed to steal your password or OTP. Never enter your credentials here.', type: 'danger' });
+      dangerCount += 2;
+    }
+
+    // Check if any social media platform was detected
+    const isSocialMedia = checks.some(c => ['📸','👥','▶️','💬','✈️'].some(icon => c.icon === icon));
+
+    if (checks.length === 0) {
+      checks.push({ icon: '🔍', label: 'Basic check done', detail: 'No obvious red flags in URL structure. Still use our checklist below to verify manually.', type: 'warn' });
+    }
+
+    // Verdict
+    let verdict, headerClass;
+    if (dangerCount >= 3) {
+      verdict = '🚨 HIGH RISK — Likely Fake or Dangerous!';
+      headerClass = 'danger';
+    } else if (dangerCount >= 1) {
+      verdict = '⚠️ Be Careful — Some red flags found';
+      headerClass = 'warn';
+    } else if (isSocialMedia) {
+      verdict = '⚠️ URL safe కానీ — Content తప్పకుండా Checklist తో verify చేయి!';
+      headerClass = 'warn';
+    } else {
+      verdict = '✅ Looks OK — but still verify manually';
+      headerClass = 'safe';
+    }
+
+    headerEl.textContent = verdict;
+    headerEl.className = 'scan-result-header ' + headerClass;
+
+    checksEl.innerHTML = checks.map(c => `
+      <div class="scan-check">
+        <div class="scan-check-icon">${c.icon}</div>
+        <div>
+          <div class="scan-check-label">${c.label}</div>
+          <div class="scan-check-detail">${c.detail}</div>
+        </div>
+      </div>
+    `).join('');
+
+    resultsEl.classList.add('visible');
+  }
+
+  // ── MULTILANGUAGE ──────────────────────────────
+  const LANGS = {
+    en: {
+      mainTitle: 'Is It <span style="color:var(--accent)">Real</span> or Fake?',
+      mainSubtitle: 'Check Instagram shops, LinkedIn jobs, and suspicious websites before trusting them with your money.',
+      installTitle: 'Install as App!',
+      installDesc: 'Save to home screen — works without internet too!',
+      startChecking: 'Start checking →',
+      tickBelow: 'Tick the signs you see below',
+      resetBtn: '↺ Reset all checks',
+      safeLabel: '✅ Looks Safe', safeDesc: 'Seems trustworthy, but stay alert',
+      warnLabel: '⚠️ Be Careful', warnDesc: 'Some red flags detected — double-check',
+      dangerLabel: '🚨 Likely FAKE', dangerDesc: 'High risk — do not share money or data!',
+      scanPlaceholder: 'https://example.com or any link...',
+      scanBtn: 'Scan 🔍',
+      scannerTitle: '🔗 Paste a Link — Instant Check',
+      scannerDesc: 'Instagram profile, Telegram channel, website link — paste here, we will check it',
+    },
+    te: {
+      mainTitle: 'ఇది <span style="color:var(--accent)">Real</span> నా Fake నా?',
+      mainSubtitle: 'Instagram shops, LinkedIn jobs, suspicious websites — మీ డబ్బు ఇవ్వడానికి ముందు check చేయి.',
+      installTitle: 'App గా Install చేయి!',
+      installDesc: 'Home screen కి save చేయి — internet లేకుండా కూడా పని చేస్తుంది!',
+      startChecking: 'Check చేయడం start చేయి →',
+      tickBelow: 'కింద కనిపించే signs tick చేయి',
+      resetBtn: '↺ అన్నీ reset చేయి',
+      safeLabel: '✅ Safe గా ఉంది', safeDesc: 'Trustworthy గా కనిపిస్తుంది, కానీ జాగ్రత్తగా ఉండు',
+      warnLabel: '⚠️ జాగ్రత్తగా ఉండు', warnDesc: 'కొన్ని red flags కనిపించాయి — మళ్ళీ verify చేయి',
+      dangerLabel: '🚨 Fake అయి ఉంటుంది!', dangerDesc: 'High risk — డబ్బు లేదా personal info ఇవ్వకు!',
+      scanPlaceholder: 'ఏదైనా link ఇక్కడ paste చేయి...',
+      scanBtn: 'Scan చేయి 🔍',
+      scannerTitle: '🔗 Link Paste చేయి — Instant Check',
+      scannerDesc: 'Instagram, Telegram, website link — paste చేయి, మేము check చేస్తాం',
+    },
+    hi: {
+      mainTitle: 'क्या यह <span style="color:var(--accent)">Real</span> है या Fake?',
+      mainSubtitle: 'Instagram shops, LinkedIn jobs, संदिग्ध websites — पैसे देने से पहले जाँच करें।',
+      installTitle: 'App की तरह Install करें!',
+      installDesc: 'Home screen पर save करें — बिना internet के भी काम करेगा!',
+      startChecking: 'जाँचना शुरू करें →',
+      tickBelow: 'नीचे दिए संकेत tick करें जो आपको दिखें',
+      resetBtn: '↺ सब reset करें',
+      safeLabel: '✅ Safe लगता है', safeDesc: 'भरोसेमंद लगता है, पर सावधान रहें',
+      warnLabel: '⚠️ सावधान रहें', warnDesc: 'कुछ red flags मिले — दोबारा जाँचें',
+      dangerLabel: '🚨 Fake हो सकता है!', dangerDesc: 'High risk — पैसे या जानकारी मत दें!',
+      scanPlaceholder: 'कोई भी link यहाँ paste करें...',
+      scanBtn: 'Scan करें 🔍',
+      scannerTitle: '🔗 Link Paste करें — तुरंत जाँच',
+      scannerDesc: 'Instagram, Telegram, website link — paste करें, हम check करेंगे',
+    },
+    ta: {
+      mainTitle: 'இது <span style="color:var(--accent)">உண்மையா</span> போலியா?',
+      mainSubtitle: 'Instagram shops, LinkedIn jobs, சந்தேகமான websites — பணம் கொடுப்பதற்கு முன் சரிபார்க்கவும்.',
+      installTitle: 'App ஆக Install செய்யுங்கள்!',
+      installDesc: 'Home screen-ல் சேமிக்கவும் — internet இல்லாமலும் வேலை செய்யும்!',
+      startChecking: 'சரிபார்க்க தொடங்கு →',
+      tickBelow: 'கீழே தெரியும் அறிகுறிகளை tick செய்யுங்கள்',
+      resetBtn: '↺ அனைத்தும் reset செய்',
+      safeLabel: '✅ பாதுகாப்பாக உள்ளது', safeDesc: 'நம்பகமானதாக தெரிகிறது, ஆனால் எச்சரிக்கையாக இருங்கள்',
+      warnLabel: '⚠️ எச்சரிக்கை', warnDesc: 'சில red flags உள்ளன — மீண்டும் சரிபார்க்கவும்',
+      dangerLabel: '🚨 போலியாக இருக்கலாம்!', dangerDesc: 'அதிக ஆபத்து — பணம் அல்லது தகவல் கொடுக்காதீர்கள்!',
+      scanPlaceholder: 'எந்த link-ஐயும் இங்கே paste செய்யுங்கள்...',
+      scanBtn: 'Scan செய் 🔍',
+      scannerTitle: '🔗 Link Paste செய்யுங்கள் — உடனடி சரிபார்ப்பு',
+      scannerDesc: 'Instagram, Telegram, website link — paste செய்யுங்கள், நாங்கள் சரிபார்க்கிறோம்',
+    }
+  };
+
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    const L = LANGS[lang];
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      if (b.textContent.includes(lang === 'en' ? 'English' : lang === 'te' ? 'తెలుగు' : lang === 'hi' ? 'हिंदी' : 'தமிழ்')) {
+        b.classList.add('active');
+      }
+    });
+    document.getElementById('mainTitle').innerHTML = L.mainTitle;
+    document.getElementById('mainSubtitle').textContent = L.mainSubtitle;
+    document.getElementById('installTitle').textContent = L.installTitle;
+    document.getElementById('installDesc').textContent = L.installDesc;
+    document.getElementById('verdictText').textContent = L.startChecking;
+    document.getElementById('verdictSub').textContent = L.tickBelow;
+    document.querySelector('.reset-btn').textContent = L.resetBtn;
+    document.getElementById('urlInput').placeholder = L.scanPlaceholder;
+    document.getElementById('scanBtn').textContent = L.scanBtn;
+    document.querySelector('.url-scanner-title').textContent = L.scannerTitle;
+    document.querySelector('.url-scanner-desc').textContent = L.scannerDesc;
+  }
+
+  // ── PWA INSTALL ────────────────────────────────
+  let deferredPrompt = null;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.getElementById('installBanner').classList.add('show');
+  });
+
+  async function installApp() {
+    if (!deferredPrompt) {
+      // iOS instructions
+      alert('iPhone/iPad లో: Safari లో open చేసి, Share button → "Add to Home Screen" నొక్కు! 📱');
+      return;
+    }
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      document.getElementById('installBanner').classList.remove('show');
+    }
+    deferredPrompt = null;
+  }
+
+  window.addEventListener('appinstalled', () => {
+    document.getElementById('installBanner').classList.remove('show');
+  });
+
+  // ── SERVICE WORKER ─────────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
+
+  // ── EXISTING FUNCTIONS ─────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('urlInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') scanURL();
+    });
+  });
+
+  function toggle(el) {
+    el.classList.toggle('checked');
+    el.querySelector('.checkbox').textContent = el.classList.contains('checked') ? '✓' : '';
+    updateScore();
+  }
+
+  function updateScore() {
+    countItems();
+    const total = dangerTotal + safeTotal;
+    const totalChecked = dangerChecked + safeChecked;
+
+    if (totalChecked === 0) {
+      document.getElementById('scoreNum').textContent = '—';
+      document.getElementById('scoreNum').style.color = 'var(--muted)';
+      document.getElementById('verdictText').textContent = 'Start checking →';
+      document.getElementById('verdictSub').textContent = 'Tick the signs you see below';
+      document.getElementById('scoreBar').style.width = '0%';
+      document.getElementById('scoreBar').style.background = 'var(--muted)';
+      return;
+    }
+
+    // Safety score: safe checks increase it, danger checks decrease it
+    let score = 50;
+    if (total > 0) {
+      score = Math.round(((safeChecked - dangerChecked * 1.5) / (dangerTotal + safeTotal)) * 100 + 50);
+    }
+    score = Math.max(0, Math.min(100, score));
+
+    document.getElementById('scoreNum').textContent = score + '%';
+    document.getElementById('scoreBar').style.width = score + '%';
+
+    let verdict, sub, color;
+    if (score >= 70) {
+      verdict = '✅ Looks Safe'; sub = 'Seems trustworthy, but stay alert'; color = 'var(--safe)';
+    } else if (score >= 40) {
+      verdict = '⚠️ Be Careful'; sub = 'Some red flags detected — double-check'; color = 'var(--warn)';
+    } else {
+      verdict = '🚨 Likely FAKE'; sub = 'High risk — do not share money or data!'; color = 'var(--danger)';
+    }
+
+    document.getElementById('scoreNum').style.color = color;
+    document.getElementById('verdictText').textContent = verdict;
+    document.getElementById('verdictText').style.color = color;
+    document.getElementById('verdictSub').textContent = sub;
+    document.getElementById('scoreBar').style.background = color;
+  }
+
+  function switchTab(name) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('section-' + name).classList.add('visible');
+    event.target.classList.add('active');
+    resetAll();
+  }
+
+  function resetAll() {
+    document.querySelectorAll('.check-item').forEach(el => {
+      el.classList.remove('checked');
+      el.querySelector('.checkbox').textContent = '';
+    });
+    document.getElementById('scoreNum').textContent = '—';
+    document.getElementById('scoreNum').style.color = 'var(--muted)';
+    document.getElementById('verdictText').textContent = 'Start checking →';
+    document.getElementById('verdictText').style.color = 'var(--text)';
+    document.getElementById('verdictSub').textContent = 'Tick the signs you see below';
+    document.getElementById('scoreBar').style.width = '0%';
+  }
+</script>
+</body>
+</html>
